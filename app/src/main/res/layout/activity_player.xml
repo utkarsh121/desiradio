@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:orientation="vertical">
+
+    <!-- Header: back | centered station | cast -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:src="@drawable/ic_back" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.15"
+                android:text="LIVE RADIO"
+                android:textColor="@color/muted"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/player_station"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/ink"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.mediarouter.app.MediaRouteButton
+            android:id="@+id/btn_cast"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="Cast to TV or speaker" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Large rounded artwork -->
+            <ImageView
+                android:id="@+id/player_artwork"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_radio_small" />
+
+            <!-- Title / artist + favorite, Spotify-style row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/player_song"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/ink"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/player_artist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/muted"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_star"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Favorite"
+                    android:src="@drawable/ic_star_outline" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/live_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:letterSpacing="0.12"
+                android:text="● LIVE"
+                android:textColor="@color/saffron_light"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Transport: prev | PLAY (centered) | next -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_prev"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Previous station"
+                    android:src="@drawable/ic_prev" />
+
+                <ImageButton
+                    android:id="@+id/btn_play"
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:background="@drawable/circle_bg"
+                    android:contentDescription="Play or pause"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_play" />
+
+                <ImageButton
+                    android:id="@+id/btn_next"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Next station"
+                    android:src="@drawable/ic_next" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_default"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/set_as_default"
+                android:textColor="@color/muted" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

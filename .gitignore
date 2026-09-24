@@ -1,0 +1,16 @@
+# Signing keys — never commit
+*.keystore
+*.jks
+KEYSTORE_PASSWORD.txt
+release.keystore
+
+# Gradle / Android build outputs
+.gradle/
+build/
+app/build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store

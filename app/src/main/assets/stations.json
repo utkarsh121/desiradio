@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Radio Mirchi Hindi",
+    "stream_url": "https://eu8.fastcast4u.com/proxy/clyedupq/stream",
+    "language": "Hindi",
+    "genre": "Bollywood",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/05/radio-mirchi-hindi-fm.jpg"
+  },
+  {
+    "name": "Mirchi Top 20",
+    "stream_url": "https://drive.uber.radio/uber/bollywoodnow/icecast.audio",
+    "language": "Hindi",
+    "genre": "Bollywood Hits",
+    "logo_url": "http://mirchi.in/favicon-196x196.png"
+  },
+  {
+    "name": "BIG 92.7 FM",
+    "stream_url": "https://stream.zeno.fm/dbstwo3dvhhtv",
+    "language": "Hindi",
+    "genre": "Bollywood",
+    "logo_url": "https://bigfmindia.com/wp-content/themes/big-fm/assets/images/favicon.png"
+  },
+  {
+    "name": "Red FM",
+    "stream_url": "https://funasia.streamguys1.com/live9",
+    "language": "Hindi",
+    "genre": "Bollywood",
+    "logo_url": "https://api.redfmindia.in/filesvc/v1/file/01939efd-c535-444b-a928-88b0a0cabcd3/content"
+  },
+  {
+    "name": "AIR Vividh Bharati",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8",
+    "language": "Hindi",
+    "genre": "Oldies/Variety",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/02/vividh-bharati.jpg"
+  },
+  {
+    "name": "AIR Delhi FM Gold",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio005_Auto.m3u8",
+    "language": "Hindi",
+    "genre": "News/Music",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/06/fm-gold-delhi.jpg"
+  },
+  {
+    "name": "Radio Udaan",
+    "stream_url": "https://stream.radioudaan.com/listen/radio_udaan/radio.mp3",
+    "language": "Hindi",
+    "genre": "Bollywood",
+    "logo_url": "https://radioudaan.com/sites/default/files/Radioudaan%20small%202_0.png"
+  },
+  {
+    "name": "Hindi Retro",
+    "stream_url": "https://stream.zeno.fm/v2zfmxef798uv",
+    "language": "Hindi",
+    "genre": "Retro",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/05/mirchi-retro-hindi.jpg"
+  },
+  {
+    "name": "AIR News 24x7",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio002/hlspbaudio002_Auto.m3u8",
+    "language": "Hindi",
+    "genre": "News",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/06/air-radio-news-24-7.jpg"
+  },
+  {
+    "name": "Aaj Tak Radio",
+    "stream_url": "https://feeds.intoday.in/aajtak/api/master.m3u8",
+    "language": "Hindi",
+    "genre": "News",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/06/aaj-tak-radio.jpg"
+  },
+  {
+    "name": "Radio Sai Bhajan",
+    "stream_url": "http://stream.radiosai.net:8000/",
+    "language": "Hindi",
+    "genre": "Devotional",
+    "logo_url": "https://www.sssmediacentre.org/assets/logo.png"
+  },
+  {
+    "name": "Bhakti Sangeet",
+    "stream_url": "https://stream.zeno.fm/epylmeu4zf7vv",
+    "language": "Hindi",
+    "genre": "Devotional",
+    "logo_url": "https://zeno.fm/_ipx/_/https://images.zeno.fm/eX9MvYK3DGQ4xQWiA-VeqrSwgC7aq-Jafk0NjnJJfOc/rs:fill:256:256/g:ce:0:0/aHR0cHM6Ly9wcm94eS56ZW5vLmZtL2NvbnRlbnQvc3RhdGlvbnMvYWd4emZucGxibTh0YzNSaGRITnlNZ3NTQ2tGMWRHaERiR2xsYm5RWWdJQ1E1Xy1zbXdnTUN4SU9VM1JoZEdsdmJsQnliMlpwYkdVWWdJRFE2TkdxdFFzTW9nRUVlbVZ1YncvaW1hZ2UvP3U9MTY2MTQxMjEzODAwMA.webp"
+  },
+  {
+    "genre": "Variety",
+    "language": "Hindi",
+    "name": "Akashvani Hindi",
+    "stream_url": "https://audio-edge-fvq45.ams.d.radiomast.io/3ccc1156-fcf8-4ba7-9a0c-28e3a465e1ae?listening-from",
+    "logo_url": "https://prasarbharati.gov.in/wp-content/uploads/2024/03/Logo.png"
+  },
+  {
+    "genre": "Music",
+    "language": "Hindi",
+    "name": "AIR FM Rainbow Delhi",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio004/hlspbaudio004_Auto.m3u8",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/07/fm-rainbow-Delhi.jpg"
+  },
+  {
+    "genre": "Music",
+    "language": "Hindi",
+    "name": "AIR FM Rainbow Mumbai",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio008/hlspbaudio008_Auto.m3u8",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/07/fm-rainbow-mumbai.jpg"
+  },
+  {
+    "genre": "Retro",
+    "language": "Hindi",
+    "name": "AIR FM Gold Mumbai",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio007/hlspbaudio007_Auto.m3u8",
+    "logo_url": "https://onlineradiohub.com/wp-content/uploads/2023/07/fmgold-mumbai.jpg"
+  },
+  {
+    "genre": "Classical",
+    "language": "Hindi",
+    "name": "AIR Raagam",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudioragam/hlspbaudioragam_Auto.m3u8",
+    "logo_url": "https://radiosindia.com/images/raagam.jpg"
+  },
+  {
+    "genre": "Variety",
+    "language": "Hindi",
+    "name": "AIR Dharamshala 103.4 FM",
+    "stream_url": "http://air.pc.cdn.bitgravity.com/air/live/pbaudio165/playlist.m3u8",
+    "logo_url": "https://prasarbharati.gov.in/wp-content/uploads/2024/03/Logo.png"
+  },
+  {
+    "genre": "Oldies/Variety",
+    "language": "Hindi",
+    "name": "Vividh Bharati Hyderabad",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio034/playlist.m3u8",
+    "logo_url": "https://prasarbharati.gov.in/wp-content/uploads/2024/03/Logo.png"
+  },
+  {
+    "genre": "Bollywood",
+    "language": "Hindi",
+    "name": "Radio Mirchi Masti",
+    "stream_url": "http://162.244.80.118:9460/stream.mp3",
+    "logo_url": "http://mirchi.in/favicon-196x196.png"
+  },
+  {
+    "genre": "Bollywood",
+    "language": "Hindi",
+    "name": "Radio Mirchi Lucknow",
+    "stream_url": "https://stream-284.surfernetwork.com/wgaznsmt92quv",
+    "logo_url": "http://mirchi.in/favicon-196x196.png"
+  },
+  {
+    "genre": "Romantic",
+    "language": "Hindi",
+    "name": "Mirchi Love",
+    "stream_url": "https://drive.uber.radio/uber/bollywoodlove/icecast.audio",
+    "logo_url": "http://mirchi.in/favicon-196x196.png"
+  },
+  {
+    "genre": "Filmy Hits",
+    "language": "Hindi",
+    "name": "Filmy Mirchi",
+    "stream_url": "https://stream.zeno.fm/6n6ewddtad0uv",
+    "logo_url": "https://mytuner.global.ssl.fastly.net/media/tvos_radios/ppqbgfej6skx.jpeg"
+  },
+  {
+    "genre": "Dance/Remix",
+    "language": "Hindi",
+    "name": "Club Mirchi Mumbai",
+    "stream_url": "https://mirchiplaylive.akamaized.net/hls/live/2036929-b/MUM/CLUBMI_Auto.m3u8",
+    "logo_url": "https://radiosindia.com/images/clubmirchi.jpg"
+  }
+]

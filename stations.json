@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Radio Mirchi Hindi",
+    "stream_url": "https://eu8.fastcast4u.com/proxy/clyedupq/stream",
+    "language": "Hindi",
+    "genre": "Bollywood"
+  },
+  {
+    "name": "Mirchi Top 20",
+    "stream_url": "https://drive.uber.radio/uber/bollywoodnow/icecast.audio",
+    "language": "Hindi",
+    "genre": "Bollywood Hits"
+  },
+  {
+    "name": "BIG 92.7 FM",
+    "stream_url": "https://stream.zeno.fm/dbstwo3dvhhtv",
+    "language": "Hindi",
+    "genre": "Bollywood"
+  },
+  {
+    "name": "Red FM",
+    "stream_url": "https://funasia.streamguys1.com/live9",
+    "language": "Hindi",
+    "genre": "Bollywood"
+  },
+  {
+    "name": "AIR Vividh Bharati",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8",
+    "language": "Hindi",
+    "genre": "Oldies/Variety"
+  },
+  {
+    "name": "AIR Delhi FM Gold",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio005_Auto.m3u8",
+    "language": "Hindi",
+    "genre": "News/Music"
+  },
+  {
+    "name": "Radio Udaan",
+    "stream_url": "https://stream.radioudaan.com/listen/radio_udaan/radio.mp3",
+    "language": "Hindi",
+    "genre": "Bollywood"
+  },
+  {
+    "name": "Hindi Retro",
+    "stream_url": "https://stream.zeno.fm/v2zfmxef798uv",
+    "language": "Hindi",
+    "genre": "Retro"
+  },
+  {
+    "name": "AIR News 24x7",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio002/hlspbaudio002_Auto.m3u8",
+    "language": "Hindi",
+    "genre": "News"
+  },
+  {
+    "name": "Aaj Tak Radio",
+    "stream_url": "https://feeds.intoday.in/aajtak/api/master.m3u8",
+    "language": "Hindi",
+    "genre": "News"
+  },
+  {
+    "name": "Radio Sai Bhajan",
+    "stream_url": "http://stream.radiosai.net:8000/",
+    "language": "Hindi",
+    "genre": "Devotional"
+  },
+  {
+    "name": "Bhakti Sangeet",
+    "stream_url": "https://stream.zeno.fm/epylmeu4zf7vv",
+    "language": "Hindi",
+    "genre": "Devotional"
+  },
+  {
+    "name": "All India Radio Punjabi",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio138/chunklist.m3u8",
+    "language": "Punjabi",
+    "genre": "Variety"
+  },
+  {
+    "name": "Bol Punjabi Radio",
+    "stream_url": "https://bolpunjabi-ekamsoftware.radioca.st/stream",
+    "language": "Punjabi",
+    "genre": "Bhangra/Pop"
+  },
+  {
+    "name": "BritAsia Radio Punjabi",
+    "stream_url": "https://s4.radio.co/sfefce156f/listen",
+    "language": "Punjabi",
+    "genre": "Bhangra"
+  },
+  {
+    "name": "Sooriyan FM",
+    "stream_url": "https://radio.lotustechnologieslk.net:8006/;stream.mp3",
+    "language": "Tamil",
+    "genre": "Pop"
+  },
+  {
+    "name": "90s Tamil Melodies",
+    "stream_url": "https://stream.zeno.fm/tqnws2eafwzuv.aac",
+    "language": "Tamil",
+    "genre": "Oldies"
+  },
+  {
+    "name": "Kalai FM",
+    "stream_url": "https://stream.zenolive.com/2vghnwshsqzuv.aac",
+    "language": "Tamil",
+    "genre": "Pop"
+  },
+  {
+    "name": "AIR Kodai FM",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio051/chunklist.m3u8",
+    "language": "Tamil",
+    "genre": "Variety"
+  },
+  {
+    "name": "AP9 FM",
+    "stream_url": "https://stream.ap9fm.in/radio/8000/radio.mp3",
+    "language": "Telugu",
+    "genre": "Pop"
+  },
+  {
+    "name": "SVBC TTD Radio",
+    "stream_url": "https://radio.mslivecdn.com:6278/stream",
+    "language": "Telugu",
+    "genre": "Devotional"
+  },
+  {
+    "name": "AIR Malayalam",
+    "stream_url": "http://air.pc.cdn.bitgravity.com/air/live/pbaudio230/playlist.m3u8",
+    "language": "Malayalam",
+    "genre": "Variety"
+  },
+  {
+    "name": "Radio Digital Malayali",
+    "stream_url": "https://radio.digitalmalayali.in/listen/stream/radio.mp3",
+    "language": "Malayalam",
+    "genre": "Pop"
+  },
+  {
+    "name": "My 90s Bengali",
+    "stream_url": "http://stream.zeno.fm/2k6xfu1pvs8uv",
+    "language": "Bengali",
+    "genre": "Oldies"
+  },
+  {
+    "name": "AIR Kolkata Geetanjali",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio055/hlspbaudio05564kbps.m3u8",
+    "language": "Bengali",
+    "genre": "Music"
+  },
+  {
+    "name": "AIR Akashvani Maitree",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio245/hlspbaudio24564kbps.m3u8",
+    "language": "Bengali",
+    "genre": "Talk/Music"
+  },
+  {
+    "name": "AIR FM Rainbow Kannada",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio027/hlspbaudio027_Auto.m3u8",
+    "language": "Kannada",
+    "genre": "Music"
+  },
+  {
+    "name": "Kannada Hits",
+    "stream_url": "https://stream.zeno.fm/68snnbug8rhvv",
+    "language": "Kannada",
+    "genre": "Hits"
+  },
+  {
+    "name": "Radio Indigo 91.9 FM",
+    "stream_url": "https://a5.asurahosting.com:8600/radio.mp3",
+    "language": "English",
+    "genre": "Pop/Hits"
+  },
+  {
+    "name": "Free FM Top 100 India",
+    "stream_url": "https://stream.zeno.fm/a5h7vfret68uv",
+    "language": "English",
+    "genre": "Top 40"
+  }
+]

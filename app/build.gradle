@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.utkarsh.desiradio'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.utkarsh.desiradio'
+        minSdk 26
+        targetSdk 35
+        versionCode 6
+        versionName '1.5'
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("$rootDir/release.keystore")
+            storePassword System.getenv("KS_PW")
+            keyAlias "desiradio"
+            keyPassword System.getenv("KS_PW")
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+
+    lint {
+        checkReleaseBuilds false
+    }
+    packaging {
+        resources {
+            // Exclude Kotlin/Native multiplatform metadata duplicated across deps
+            excludes += ['**/default/manifest', '**/default/linkdata/**',
+                         'META-INF/*.version', 'META-INF/versions/**',
+                         'META-INF/kotlin-project-structure-metadata.json']
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.media3:media3-exoplayer:1.5.1'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.5.1'
+    implementation 'androidx.media3:media3-session:1.5.1'
+    implementation 'androidx.media3:media3-ui:1.5.1'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'io.coil-kt:coil:2.6.0'
+    implementation 'com.google.android.gms:play-services-cast-framework:21.4.0'
+    implementation 'com.google.guava:guava:32.1.2-android'
+}

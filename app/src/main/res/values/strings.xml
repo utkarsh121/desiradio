@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Desi Radio</string>
+    <string name="tagline">Live radio from India</string>
+    <string name="manage_stations">Manage stations</string>
+    <string name="set_as_default">Set as default</string>
+    <string name="default_station">Default station</string>
+    <string name="clear_default">Clear default</string>
+    <string name="autoplay">Play default station on launch</string>
+    <string name="hide_station">Hide station</string>
+    <string name="all">All</string>
+    <string name="search_hint">Search stations…</string>
+</resources>

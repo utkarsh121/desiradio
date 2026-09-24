@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="saffron">#E8720C</color>
+    <color name="saffron_dark">#B9570A</color>
+    <color name="saffron_light">#F5A623</color>
+    <color name="bg_dark">#14100B</color>
+    <color name="surface_dark">#221A12</color>
+    <color name="surface_variant">#2E2318</color>
+    <color name="ink">#F7EFE3</color>
+    <color name="muted">#B39B7E</color>
+    <color name="cream">#FFF9F2</color>
+</resources>
