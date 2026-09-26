@@ -19,6 +19,15 @@
             android:name="com.google.android.gms.car.application"
             android:resource="@xml/automotive_app_desc" />
 
+        <!-- Separate opt-in required for embedded Android Automotive OS: its
+             MediaSource picker filters out MediaBrowserServices that lack this
+             key ("Skipping MBS ... belonging to non media template app"),
+             even though the gms.car.application key above already covers
+             phone-projected Android Auto. -->
+        <meta-data
+            android:name="com.android.automotive"
+            android:resource="@xml/automotive_app_desc" />
+
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
             android:value="com.utkarsh.desiradio.CastOptionsProvider" />
