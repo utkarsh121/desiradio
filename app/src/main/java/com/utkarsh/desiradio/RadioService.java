@@ -211,13 +211,31 @@ public class RadioService extends MediaLibraryService {
         }
 
         @Override
-        public ListenableFuture<List<MediaItem>> onAddMediaItems(
+        public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(
                 MediaSession session,
                 MediaSession.ControllerInfo controller,
-                List<MediaItem> mediaItems) {
+                List<MediaItem> mediaItems,
+                int startIndex,
+                long startPositionMs) {
             try {
-                // Radio plays one live stream at a time: resolve the tapped
-                // station to a single playable item. No playlist, no queue.
+                // A car tapping a single station in the browse tree (or any
+                // other client resolving one unplayable browse item) gets the
+                // same full visible-stations queue MainActivity builds, so
+                // next/prev and "Up next" work from the car too — not only
+                // when playback happened to start from the phone's own UI.
+                if (mediaItems.size() == 1 && mediaItems.get(0) != null
+                        && store.findByUrl(mediaItems.get(0).mediaId) != null) {
+                    List<Station> visible = store.getVisibleStations();
+                    List<MediaItem> queue = new ArrayList<>();
+                    int index = 0;
+                    for (int i = 0; i < visible.size(); i++) {
+                        Station s = visible.get(i);
+                        queue.add(toMediaItem(s));
+                        if (s.streamUrl.equals(mediaItems.get(0).mediaId)) index = i;
+                    }
+                    return Futures.immediateFuture(
+                            new MediaSession.MediaItemsWithStartPosition(queue, index, 0));
+                }
                 List<MediaItem> out = new ArrayList<>();
                 for (MediaItem mi : mediaItems) {
                     if (mi == null) continue;
@@ -227,6 +245,32 @@ public class RadioService extends MediaLibraryService {
                     } else if (mi.localConfiguration != null
                             && mi.localConfiguration.uri != null) {
                         // Only pass through items that can actually play.
+                        out.add(mi);
+                    }
+                }
+                return Futures.immediateFuture(new MediaSession.MediaItemsWithStartPosition(
+                        out, startIndex, startPositionMs));
+            } catch (Exception e) {
+                CrashLog.log(RadioService.this, "onSetMediaItems", e);
+                return Futures.immediateFuture(new MediaSession.MediaItemsWithStartPosition(
+                        new ArrayList<>(), 0, 0));
+            }
+        }
+
+        @Override
+        public ListenableFuture<List<MediaItem>> onAddMediaItems(
+                MediaSession session,
+                MediaSession.ControllerInfo controller,
+                List<MediaItem> mediaItems) {
+            try {
+                List<MediaItem> out = new ArrayList<>();
+                for (MediaItem mi : mediaItems) {
+                    if (mi == null) continue;
+                    Station s = store.findByUrl(mi.mediaId);
+                    if (s != null) {
+                        out.add(toMediaItem(s));
+                    } else if (mi.localConfiguration != null
+                            && mi.localConfiguration.uri != null) {
                         out.add(mi);
                     }
                 }
