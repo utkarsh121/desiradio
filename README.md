@@ -3,7 +3,7 @@
 An Android app for streaming Hindi / Indian radio stations — 30 stations with live metadata, a Spotify-style player, favorites, Chromecast support, and Android Auto integration.
 
 **Package:** `com.utkarsh.desiradio`
-**Current version:** 1.5 (versionCode 6) · `compileSdk 35` · `targetSdk 35` · `minSdk 26`
+**Current version:** 1.6 (versionCode 7) · `compileSdk 36` · `targetSdk 36` · `minSdk 26`
 
 ## Features
 
@@ -42,13 +42,15 @@ radio_apk/
 │       │   └── Ui.java
 │       ├── res/xml/automotive_app_desc.xml   # Android Auto descriptor (media)
 │       └── assets/stations.json              # station list (30 entries)
+├── app/src/androidTest/java/com/utkarsh/desiradio/
+│   └── LegacyBrowseTreeInstrumentedTest.java # on-device browse-tree test (real MediaBrowserCompat protocol)
 ├── stations.json / stations_extra.json       # source copies of the station data
 └── build.gradle / settings.gradle / gradle.properties
 ```
 
 ## Building
 
-Requires JDK 17 and the Android SDK (platform 35).
+Requires JDK 17 and the Android SDK (platform 36).
 
 ```bash
 export JAVA_HOME=/path/to/jdk17
@@ -71,11 +73,13 @@ committed** (see `.gitignore`); provide your own for release builds.
 | 1.3 | 4 | Restored 24-item queue (next/prev everywhere), edge-to-edge insets fix, swipe-away shutdown |
 | 1.4 | 5 | Fixed 8 broken station artwork records; junk-logo filtering |
 | 1.5 | 6 | Android Auto `pageSize <= 0` pagination edge-case fix; explicit `ImmutableList` results; added `onGetItem` override |
+| 1.6 | 7 | Fixed the real root cause of "No items" in Android Auto / Android Automotive OS; fixed next/prev/queue not appearing when playback starts from the car; fixed Android Automotive OS media-source picker exclusion; Favorites no longer falls back to the full station list when empty; target API 36 |
 
-## Known issues (under investigation)
+## Known issues
 
-- Some head units show **"No items"** in Android Auto and the **jog wheel / rotary focus** doesn't respond. v1.5 addresses a pagination edge case believed to be the cause (`onGetChildren` returning 24 items for a `pageSize <= 0` request, which Media3's `verifyResultItems` rejects), but this needs confirmation on real car hardware.
-- If you fix this, the likely area is `RadioService.onGetChildren()` / `onGetItem()` and the browse-tree construction.
+- **"No items" root cause found and fixed in 1.6.** Browse-list `MediaItem`s were built with a playback URI attached directly (`.setUri()`), which silently breaks Media3's conversion to the legacy `MediaBrowserCompat.MediaItem` format that real car head units and Android Automotive OS speak — `RadioService.onGetChildren()` was correctly returning the full station list, but the car received zero items, with no error or crash anywhere. Fixed by giving browse-list items a URI-less descriptor (`RadioService.toBrowsableMediaItem()`); playback still resolves a URI separately via `onAddMediaItems()`/`onGetItem()`/`onSetMediaItems()` when a station is actually selected. Verified via live reproduction and fix confirmation on two different Android Automotive OS emulator builds (screenshots, logs, and a passing on-device instrumented test — see `LegacyBrowseTreeInstrumentedTest`). **Not yet confirmed on real car hardware** — if you still see "No items" after updating, it's a new/different bug, not this one.
+- **Jog wheel / rotary navigation** — no reports of this since the 1.6 fix (an empty list naturally has nothing for a jog wheel to move between, which likely explains the original reports). Real desktop/DHU testing was inconclusive: Google's own Desktop Head Unit tool is a stale 2022 build that fails to complete a handshake with the current (2026) Android Auto app, on both an emulator and a real phone — a tooling problem, not an app one. If jog wheel issues persist on real hardware after 1.6, they're in Android Auto's/Automotive's own host-rendered focus traversal, which `RadioService` has no code path into (it only serves `MediaBrowserService` data — no car-facing UI of its own).
+- **Android Automotive OS (embedded) app-grid visibility** — the manifest now declares both `com.google.android.gms.car.application` (phone-projected Android Auto) and `com.android.automotive` (Automotive OS) meta-data, but Automotive OS additionally requires the app have **no launcher activity** to appear in its media-source picker (confirmed via Google's own emulator-testing docs). `MainActivity` keeps its launcher intent-filter for the phone home-screen icon, so Desi Radio won't currently show up as a source on embedded Automotive OS head units — only phone-projected Android Auto. Fixing this for real would need a separate Automotive-OS build variant (Gradle product flavor) with a launcher-free manifest; not done, since the reported bug was specifically about phone-projected Android Auto.
 
 ## License
 
