@@ -7,6 +7,7 @@ import android.support.v4.media.MediaBrowserCompat;
 
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,16 +34,28 @@ import static org.junit.Assert.assertTrue;
 @RunWith(AndroidJUnit4.class)
 public class LegacyBrowseTreeInstrumentedTest {
 
+    /** MediaBrowserCompat requires a Looper (it builds a Handler internally),
+     *  and delivers callbacks on that same thread — so every call into it
+     *  must happen on the main thread, not the instrumentation test thread. */
+    private static void runOnMain(Runnable r) {
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(r);
+    }
+
     private MediaBrowserCompat connect(Context ctx) throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(1);
         AtomicReference<Boolean> failed = new AtomicReference<>(false);
-        MediaBrowserCompat browser = new MediaBrowserCompat(ctx,
-                new ComponentName(ctx, RadioService.class),
-                new MediaBrowserCompat.ConnectionCallback() {
-                    @Override public void onConnected() { latch.countDown(); }
-                    @Override public void onConnectionFailed() { failed.set(true); latch.countDown(); }
-                }, null);
-        browser.connect();
+        AtomicReference<MediaBrowserCompat> ref = new AtomicReference<>();
+        runOnMain(() -> {
+            MediaBrowserCompat browser = new MediaBrowserCompat(ctx,
+                    new ComponentName(ctx, RadioService.class),
+                    new MediaBrowserCompat.ConnectionCallback() {
+                        @Override public void onConnected() { latch.countDown(); }
+                        @Override public void onConnectionFailed() { failed.set(true); latch.countDown(); }
+                    }, null);
+            ref.set(browser);
+            browser.connect();
+        });
+        MediaBrowserCompat browser = ref.get();
         assertTrue("Timed out connecting to RadioService", latch.await(10, TimeUnit.SECONDS));
         assertFalse("onConnectionFailed()", failed.get());
         assertTrue("MediaBrowserCompat reports not connected", browser.isConnected());
@@ -76,13 +89,15 @@ public class LegacyBrowseTreeInstrumentedTest {
                 latch.countDown();
             }
         };
-        if (options != null) {
-            browser.subscribe(parentId, options, cb);
-        } else {
-            browser.subscribe(parentId, cb);
-        }
+        runOnMain(() -> {
+            if (options != null) {
+                browser.subscribe(parentId, options, cb);
+            } else {
+                browser.subscribe(parentId, cb);
+            }
+        });
         boolean onTime = latch.await(10, TimeUnit.SECONDS);
-        browser.unsubscribe(parentId, cb);
+        runOnMain(() -> browser.unsubscribe(parentId, cb));
         assertTrue("Timed out waiting for children of '" + parentId + "'", onTime);
         assertNull("Browse callback reported an error: " + error.get(), error.get());
         return result.get();
@@ -120,13 +135,12 @@ public class LegacyBrowseTreeInstrumentedTest {
                         mi.isPlayable());
             }
 
-            // Favorites falls back to the visible list when empty (by design) —
-            // must never come back null/empty on a fresh install.
+            // Favorites shows only starred stations — empty (not a fallback
+            // to the full list) is the correct result on a fresh install.
             List<MediaBrowserCompat.MediaItem> favorites = subscribe(browser, favId, null);
             assertNotNull("Favorites: onChildrenLoaded delivered null", favorites);
-            assertFalse("Favorites came back empty", favorites.isEmpty());
         } finally {
-            browser.disconnect();
+            runOnMain(browser::disconnect);
         }
     }
 
@@ -164,7 +178,7 @@ public class LegacyBrowseTreeInstrumentedTest {
             assertEquals("Paginated browse lost or duplicated items vs. the unpaged list",
                     total, collected.size());
         } finally {
-            browser.disconnect();
+            runOnMain(browser::disconnect);
         }
     }
 
@@ -190,7 +204,7 @@ public class LegacyBrowseTreeInstrumentedTest {
             // Must complete (not hang) and must not deliver an onError.
             subscribe(browser, allId, opts);
         } finally {
-            browser.disconnect();
+            runOnMain(browser::disconnect);
         }
     }
 }

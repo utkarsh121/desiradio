@@ -54,6 +54,31 @@ public class RadioService extends MediaLibraryService {
                 .build();
     }
 
+    /** Browse-list descriptor for a station: no playback URI attached.
+     *  A URI-bearing MediaItem here breaks Media3's legacy-stub conversion
+     *  to MediaBrowserCompat.MediaItem — real car head units (and Android
+     *  Automotive OS) silently receive zero children even though this
+     *  callback returns the full list, which showed up as "No items" with
+     *  no error, crash, or log anywhere. Playback is resolved separately,
+     *  with a URI, via onAddMediaItems()/onGetItem() when actually selected. */
+    private static MediaItem toBrowsableMediaItem(Station s) {
+        MediaMetadata.Builder mb = new MediaMetadata.Builder()
+                .setTitle(s.name)
+                .setArtist(s.genre)
+                .setIsPlayable(true)
+                .setIsBrowsable(false);
+        if (s.logoUrl != null && !s.logoUrl.isEmpty()
+                && !s.logoUrl.equals("null")
+                && (s.logoUrl.startsWith("http://")
+                    || s.logoUrl.startsWith("https://"))) {
+            mb.setArtworkUri(Uri.parse(s.logoUrl));
+        }
+        return new MediaItem.Builder()
+                .setMediaId(s.streamUrl)
+                .setMediaMetadata(mb.build())
+                .build();
+    }
+
     private static MediaItem folder(String id, String title) {
         return new MediaItem.Builder()
                 .setMediaId(id)
@@ -102,10 +127,9 @@ public class RadioService extends MediaLibraryService {
                     all.add(folder("all", "All Stations"));
                 } else if ("favorites".equals(parentId)) {
                     List<Station> favs = store.getFavoriteStations();
-                    if (favs.isEmpty()) favs = store.getVisibleStations();
                     for (Station s : favs) {
                         try {
-                            all.add(toMediaItem(s));
+                            all.add(toBrowsableMediaItem(s));
                         } catch (Exception e) {
                             CrashLog.log(RadioService.this, "browse:favorites:" + s.name, e);
                         }
@@ -113,7 +137,7 @@ public class RadioService extends MediaLibraryService {
                 } else if ("all".equals(parentId)) {
                     for (Station s : store.getVisibleStations()) {
                         try {
-                            all.add(toMediaItem(s));
+                            all.add(toBrowsableMediaItem(s));
                         } catch (Exception e) {
                             CrashLog.log(RadioService.this, "browse:all:" + s.name, e);
                         }
@@ -123,7 +147,6 @@ public class RadioService extends MediaLibraryService {
                 // pageSize items (IllegalStateException: Invalid size=..),
                 // which Android Auto then shows as "no items".
                 List<MediaItem> paged = paginate(all, page, pageSize);
-                // Log browse for diagnostics (visible in files/crashes/ if needed).
                 // Use ImmutableList explicitly: the framework validates size
                 // against pageSize, and a mutable subList view has caused
                 // subtle issues on some head units.
